@@ -1,3 +1,5 @@
+import 'package:firebase_basic_app/pages/Home.dart';
+import 'package:firebase_basic_app/pages/Register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Container(
         margin: EdgeInsets.all(10),
@@ -22,11 +25,11 @@ class _LoginPageState extends State<LoginPage> {
                 height: 250.h,
                 width: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: Image.asset("images/20945301.jpg"),
                 )),
             SizedBox(
-              height: 20.h,
+              height: 10.h,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                   //padding: EdgeInsets.only(left: 10),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(width: 0.7),
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
                     decoration: InputDecoration(
@@ -63,16 +66,23 @@ class _LoginPageState extends State<LoginPage> {
                   //padding: EdgeInsets.only(left: 10),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      border: Border.all(),
+                      border: Border.all(width: 0.7),
                       borderRadius: BorderRadius.circular(10)),
                   child: TextField(
                     decoration: InputDecoration(
                         hintText: "Password",
                         border: InputBorder.none,
                         prefixIcon: Icon(Icons.lock),
-                        suffixIcon: Text(
-                          "Forgot?",
-                          style: TextStyle(color: Colors.blue),
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.only(top: 15, right: 15),
+                          child: Text(
+                            "Forgot?",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                            ),
+                          ),
                         )),
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
@@ -81,76 +91,123 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 20.0.h,
                 ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHome()));
+                  },
+                  child: Center(
+                    child: Container(
+                        height: 50.h,
+                        width: 300.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color(0xFF1a1aff),
+                        ),
+                        child: Center(
+                            child: Text(
+                          "Login",
+                          style: TextStyle(
+                              fontSize: 20.0.sp, fontWeight: FontWeight.bold),
+                        ))),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
                 Center(
-                  child: Container(
-                      height: 50.h,
-                      width: 300.h,
+                  child: Text(
+                    "Or, login with...",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0.h,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                      height: 60.h,
+                      width: 50.w,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.blue.shade600,
+                          border: Border.all(width: 1, color: Colors.grey),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        child: Image.asset("images/google icon.png"),
                       ),
-                      child: Center(
-                          child: Text(
-                        "Login",
-                        style: TextStyle(fontSize: 20.0.sp,fontWeight: FontWeight.bold),
-                      ))),
+                    )),
+                    SizedBox(
+                      width: 10.0.w,
+                    ),
+                    Expanded(
+                        child: Container(
+                      height: 60.h,
+                      width: 50.w,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 1, color: Colors.grey),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        child: Image.asset("images/facebook icon.png"),
+                      ),
+                    )),
+                    SizedBox(
+                      width: 10.0.w,
+                    ),
+                    Expanded(
+                        child: Container(
+                      height: 60.h,
+                      width: 50.w,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 1, color: Colors.grey),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
+                        child: Image.asset("images/apple icon.png"),
+                      ),
+                    )),
+                  ],
                 ),
-                SizedBox(height: 20.h,),
-                Center(
-                  child: Text("Or, login with...",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  ),
+                SizedBox(
+                  height: 20.0.h,
                 ),
-                SizedBox(height: 20.0.h,),
-                Row(children: [
-                  Expanded(child: Container(
-                    height: 60.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.grey),
-                      
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "New to EmployeEase?",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      child: Image.asset("images/google icon.png"),
-                    ),
-                  )),
-                  SizedBox(width: 10.0.w,),
-                  Expanded(child: Container(
-                    height: 60.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.grey),
-                      
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      child: Image.asset("images/facebook icon.png"),
-                    ),
-                  )),
-                  SizedBox(width: 10.0.w,),
-                  Expanded(child: Container(
-                    height: 60.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.grey),
-                      
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      child: Image.asset("images/apple icon.png"),
-                    ),
-                  )),
-                ],)
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> RegisterPage()));
+                          });
+                        },
+                        child: Text(
+                          "Register",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.sp,
+                          ),
+                        ))
+                  ],
+                )
               ],
             )
           ],
